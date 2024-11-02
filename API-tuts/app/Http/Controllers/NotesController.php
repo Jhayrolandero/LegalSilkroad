@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Notes;
-use App\Service\JWTService;
+use App\Services\JWTService;
 use Illuminate\Http\Request;
 use Laravel\Prompts\Note;
 
@@ -20,11 +20,10 @@ class NotesController extends Controller
      */
     public function getUserNotes() {
         try {
-
             $notes = Notes::where('user_id', $this->JWTService->parseToken()->id)
-            ->get();
+                        ->get();
             
-            return response()->json(compact('notes'));
+            return response()->json($notes);
         } catch(\Exception $e) {
             return response()->json($e, 400);
         }
