@@ -14,4 +14,12 @@ window.addEventListener('load', () => {
     }, (error) => {
         return Promise.reject(error);
     });
+
+    axios.get("http://127.0.0.1:8000/api/userNotes")
+    .then((response) => {
+        console.log(response.data)
+    })
+    .catch((error) => {
+        console.error(error.response)
+    })
 })

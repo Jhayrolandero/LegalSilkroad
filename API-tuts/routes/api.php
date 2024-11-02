@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\JWTAuthController;
+use App\Http\Controllers\NotesController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\JWTMiddleware;
 use Illuminate\Http\Request;
@@ -23,4 +24,5 @@ Route::post('/login', [JWTAuthController::class, 'login']);
 
 Route::middleware([JwtMiddleware::class])->group(function () {
     Route::get('/user',[UserController::class, 'getUsers']);
+    Route::get('/userNotes', [NotesController::class, 'getUserNotes']);
 });
