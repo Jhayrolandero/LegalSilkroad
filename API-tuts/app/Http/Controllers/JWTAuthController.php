@@ -33,8 +33,13 @@ class JWTAuthController extends Controller
         // return response()->json(compact('user', 'token'), 201);
     }
 
-    // User Login
 
+    /**
+     * Login
+     * 
+     * @param \Illuminate\Http\Request $request
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
     public function login(Request $request) {
         $credentials = $request->only('email', 'password');
 
